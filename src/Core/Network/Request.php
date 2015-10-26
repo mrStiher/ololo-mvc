@@ -3,14 +3,31 @@
 namespace OloloCms\Core\Network;
 
 /**
-* Класс обработки запросов
-*/
+ * Класс обработки запросов
+ */
 class Request
 {
-	public function getUrl()
-	{
-		return $_SERVER['REQUEST_URI'];
-	}
+    protected $route;
+    protected $url;
 
+    public function __construct()
+    {
+        $this->url = $_SERVER['REQUEST_URI'];
+    }
+
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    public function setRouteName($routeName)
+    {
+        $this->route = $routeName;
+    }
+
+    public function getRouteName()
+    {
+    	return $this->route;
+    }
 
 }

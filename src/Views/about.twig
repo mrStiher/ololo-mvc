@@ -1,1 +1,15 @@
-О нас 
+{% extends "base.twig" %}
+
+{% block title %}О проекте{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1>О проекте</h1>
+    <p>
+    	Здесь текс с описанием проделанной работы
+    </p>
+{% endblock %}

@@ -1,1 +1,14 @@
-Hello {{ name }}!
+{% extends "base.twig" %}
+
+{% block title %}Главная страница{% endblock %}
+{% block head %}
+    {{ parent() }}
+    <style type="text/css">
+        .important { color: #336699; }
+    </style>
+{% endblock %}
+{% block content %}
+    <p>
+    	Текст главной страницы
+    </p>
+{% endblock %}

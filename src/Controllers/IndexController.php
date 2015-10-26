@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
 	public function index()
 	{
-		return $this->twig->render('index.twig', array('name' => 'Fabien'));
+		return $this->twig->render('index.twig');
 	}
 
 	public function about()
@@ -21,6 +21,6 @@ class IndexController extends Controller
 
 	public function notFound()
 	{
-		$this->twig->render('index.twig', array('name' => 'Not found'));
+		return $this->twig->render('404.twig');
 	}
 }
