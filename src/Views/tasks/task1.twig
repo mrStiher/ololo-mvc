@@ -1,0 +1,78 @@
+{% extends "base.twig" %}
+
+{% block title %}Задание 1{% endblock %}
+{% block content %}
+	<h1>Задание 1</h1>
+
+	<h4>Текст задания:</h4>
+    <div class="taskDescription">
+    	<p>Есть массив BB кодов в текстовом представлении</p>
+		<p>Преобразовать его в 2 PHP массива, где ключ массива – название BB кода, значение в одном массиве это данные BB кода, а в другом это описание BB кода</p> 
+		<p>* Ограничение – вложенность BB кодов не допускается, т.е не надо это учитывать в обработке. Коды “размазаны” по тексту и не следуют друг за другом.
+		Описание BB кода начинается после символа “:”. Описание может отсутствовать. Закрывающий BB код – обязателен.</p>
+
+		<p>Формат BB код: [ BB :ОПИСАНИЕ]ДАННЫЕ[/ BB ]</p>
+
+		<p>Пример для проверки кода:</p>
+		<pre>980923ылвоащшываг902к3ыов
+[resolve_urls]f1;ddd
+mmm[/resolve_urls]ыва.юбьгш
+[banned_urls]f1;ddd;mmm[/banned_urls][own_domain]true[/own_domain]
+[ban_file]f1;ddd;mmm[/ban_file]
+[ban_mime]f1;ddd;mmm[/ban_mime]
+[iconv_file:WINDOWS-1251=>UTF-8]f1;ddd;mmm[/iconv_file] 
+[iconv_file:KOI8-R=>UTF-8]f1;ddd;mmm[/iconv_file] 
+[iconv_mime:WINDOWS-1251=>UTF-8]f1;
+ddd;
+mmm
+[/iconv_mime]sd908f90
+[replace_file]inF===ourF;ddd===ppp;mmm===rrr[/replace_file]
+[add_file:FILE]DATA[/add_file]
+dsiu90843
+[post:URL_LOCATION]DATA
+
+[/post]
+,dfkdjfkdjf</pre>
+    </div>
+
+
+    {% if showResult %}
+    	<h4>Результат:</h4>
+		<div class="taskBody">
+			<pre>
+//Массив с данными
+{{ var_export(bbTagData) }}
+//Массив с описаниями
+{{ var_export(bbTagDescription) }}
+			</pre>
+		</div>
+	{% else %}
+		<form action="/tasks/task1" method="POST">
+			<div class="form-group">
+				<label for="bbString">Текст с bb-кодами</label>
+				<textarea class="form-control" rows="20" id="bbString" name="bbString">
+980923ылвоащшываг902к3ыов
+[resolve_urls]f1;ddd
+mmm[/resolve_urls]ыва.юбьгш
+[banned_urls]f1;ddd;mmm[/banned_urls][own_domain]true[/own_domain]
+[ban_file]f1;ddd;mmm[/ban_file]
+[ban_mime]f1;ddd;mmm[/ban_mime]
+[iconv_file:WINDOWS-1251=>UTF-8]f1;ddd;mmm[/iconv_file] 
+[iconv_file:KOI8-R=>UTF-8]f1;ddd;mmm[/iconv_file] 
+[iconv_mime:WINDOWS-1251=>UTF-8]f1;
+ddd;
+mmm
+[/iconv_mime]sd908f90
+[replace_file]inF===ourF;ddd===ppp;mmm===rrr[/replace_file]
+[add_file:FILE]DATA[/add_file]
+dsiu90843
+[post:URL_LOCATION]DATA
+
+[/post]
+,dfkdjfkdjf
+				</textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Отправить</button>
+		</form>
+	{% endif %}
+{% endblock %}

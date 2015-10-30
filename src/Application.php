@@ -6,6 +6,7 @@ use Exception;
 use OloloCms\Core\Network\Request;
 use Twig_Environment;
 use Twig_Loader_Filesystem;
+use Twig_SimpleFunction;
 
 /**
  * Главный класс приложения
@@ -26,6 +27,16 @@ class Application
             'controller' => \OloloCms\Controllers\IndexController::class,
             'action' => 'about',
         ],
+        '/tasks' => [
+        	'name' => 'tasks',
+            'controller' => \OloloCms\Controllers\TaskController::class,
+            'action' => 'taskList',
+        ],
+        '/tasks/task1' => [
+        	'name' => 'task1',
+            'controller' => \OloloCms\Controllers\TaskController::class,
+            'action' => 'task1',
+        ],
         'notFound' => [
             'name' => 'notFound',
             'controller' => \OloloCms\Controllers\IndexController::class,
@@ -40,6 +51,9 @@ class Application
             'cache' => __DIR__ . '/../cache',
             'auto_reload' => true,
         ));
+
+        $varExportFunction = new Twig_SimpleFunction('var_export', 'var_export');
+		$this->twig->addFunction($varExportFunction);
     }
 
     public function run()

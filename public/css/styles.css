@@ -5,3 +5,11 @@ body {
   padding: 40px 15px;
   text-align: justify;
 }
+
+.taskDescription {
+	background-color: #ddd;
+	border: 1px solid #bbb;
+	border-radius: 3px;
+	padding: 20px;
+	margin-bottom: 50px;
+}
